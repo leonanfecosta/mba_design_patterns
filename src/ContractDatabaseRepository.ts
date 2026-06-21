@@ -12,3 +12,4 @@ export default class ContractDatabaseRepository implements ContractRepository {
     return contracts;
   }
 }
+
