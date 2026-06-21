@@ -1,14 +1,14 @@
-import pgPromise from "pg-promise";
 import ContractRepository from "./ContractRepository";
+import DatabaseConnection from "./DatabaseConnection";
 
 export default class ContractDatabaseRepository implements ContractRepository {
+  constructor(readonly connection: DatabaseConnection) { }
+
   async list(): Promise<any[]> {
-    const connection = pgPromise()("postgres://postgres:postgres@localhost:5432/app");
-    const contracts = await connection.query("SELECT * FROM design_patterns.contract");
+    const contracts = await this.connection.query("SELECT * FROM design_patterns.contract", []);
     for (const contract of contracts) {
-      contract.payments = await connection.query("SELECT * FROM design_patterns.payment WHERE id_contract = $1", [contract.id_contract]);
+      contract.payments = await this.connection.query("SELECT * FROM design_patterns.payment WHERE id_contract = $1", [contract.id_contract]);
     }
-    await connection.$pool.end();
     return contracts;
   }
 }
