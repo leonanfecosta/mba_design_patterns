@@ -1,0 +1,40 @@
+import moment from "moment";
+import Invoice from "./Invoice";
+import Payment from "./Payment";
+
+export default class Contract {
+  private payments: Payment[] = [];
+  constructor(
+    readonly idContract: string,
+    readonly description: string, readonly amount: number, readonly periods: number, readonly date: Date) {
+    this.payments = [];
+  }
+
+  addPayment(payment: Payment): void {
+    this.payments.push(payment);
+  }
+
+  get paymentsList(): Payment[] {
+    return this.payments;
+  }
+
+  generateInvoices(month: number, year: number, type: string) {
+    const invoices: Invoice[] = [];
+    if (type === "cash") {
+      for (const payment of this.paymentsList) {
+        if (payment.date.getMonth() + 1 !== month || payment.date.getFullYear() !== year) continue;
+        invoices.push(new Invoice(payment.date, payment.amount));
+      }
+    }
+    if (type === "accrual") {
+      let period = 0;
+      while (period <= this.periods) {
+        const date = moment(this.date).add(period++, "months").toDate();
+        if (date.getMonth() + 1 !== month || date.getFullYear() !== year) continue;
+        const amount = this.amount / this.periods;
+        invoices.push(new Invoice(date, amount));
+      }
+    }
+    return invoices;
+  }
+}
