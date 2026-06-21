@@ -23,4 +23,4 @@ INSERT INTO design_patterns.contract (id_contract, description, amount, periods,
   ('77ea3849-92a5-4045-a382-23eee492d7bd', 'Prestação de serviços escolares', 6000, 12, '2022-01-01T00:00:00Z');
 
 INSERT INTO design_patterns.payment (id_payment, id_contract, amount, date) VALUES
-  ('dd3844ae-cf0a-477a-813d-c3233bc3389e', '77ea3849-92a5-4045-a382-23eee492d7bd', 6000, '2022-02-01T00:00:00Z');
+  ('dd3844ae-cf0a-477a-813d-c3233bc3389e', '77ea3849-92a5-4045-a382-23eee492d7bd', 6000, '2022-01-01T00:00:00Z');
