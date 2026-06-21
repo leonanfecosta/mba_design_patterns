@@ -1,0 +1,36 @@
+{
+  "name": "mba_design_patterns",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leonanfecosta/mba_design_patterns.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/leonanfecosta/mba_design_patterns/issues"
+  },
+  "homepage": "https://github.com/leonanfecosta/mba_design_patterns#readme",
+  "dependencies": {
+    "@types/jest": "^30.0.0",
+    "@types/node": "^26.0.0",
+    "axios": "^1.18.0",
+    "biome": "^0.3.3",
+    "express": "^5.2.1",
+    "jest": "^30.4.2",
+    "moment": "^2.30.1",
+    "nodemon": "^3.1.14",
+    "pg-promise": "^12.6.2",
+    "ts-jest": "^29.4.11",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^6.0.3"
+  }
+}
